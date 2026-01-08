@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis XV Morena</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+}
+
+.container {
+    position: relative;
+    max-width: 480px;
+    margin: auto;
+}
+
+.container img {
+    width: 100%;
+    display: block;
+}
+
+/* Botones */
+.button {
+    position: absolute;
+    padding: 12px 20px;
+    background-color: rgba(180, 140, 255, 0.9);
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Posiciones */
+#direccion {
+    bottom: 110px;
+    left: 40px;
+}
+
+#confirmar {
+    bottom: 110px;
+    right: 40px;
+}
+
+/* Cuenta regresiva */
+.countdown {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    color: #c9b6ff;
+    font-size: 16px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <!-- CAMBIÁ EL NOMBRE DE LA IMAGEN SI ES NECESARIO -->
+    <img src="invitacion-morena.png" alt="Invitación XV Morena">
+
+    <a id="direccion" class="button"
+       href="https://www.google.com/maps/search/?api=1&query=Pringles+738+San+Luis"
+       target="_blank">📍 Dirección</a>
+
+    <a id="confirmar" class="button"
+       href="https://wa.me/542664841493?text=Hola%20😊%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Morena"
+       target="_blank">✅ Confirmar</a>
+
+    <div class="countdown" id="countdown"></div>
+</div>
+
+<script>
+const eventDate = new Date("February 28, 2026 20:30:00").getTime();
+
+const timer = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "🎉 ¡Hoy es el gran día! 🎉";
+        clearInterval(timer);
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        `⏳ Faltan ${days} días ${hours} hs ${minutes} min ${seconds} seg`;
+}, 1000);
+</script>
+
+</body>
+</html>
